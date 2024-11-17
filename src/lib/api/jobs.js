@@ -1,22 +1,29 @@
+export const createJob = async (data) => {
+
+  const token = await window.Clerk?.session?.getToken();
+
+  const res = await fetch("http://localhost:8000/api/jobs", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+    title: data.title,
+    type: data.type,
+    description: data.description,
+    location: data.location,
+    questions: data.questions,
+    }),
+  });
+  if (!res.ok) {
+    throw new Error("Failed to create job");
+  }
+  const job = await res.json();
+  return job;
+}
+
 export const getJobs = async () => {
-    //   fetch("http://localhost:8000/api/jobs", {
-    //     method: "GET",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   })
-    //     .then((res) => {
-    //       console.log(res);
-    //       return res.json();
-    //     })
-    //     .then((data) => {
-    //       console.log(data);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
-    // };
-  
     const res = await fetch("http://localhost:8000/api/jobs", {
       method: "GET",
       headers: {
@@ -30,7 +37,7 @@ export const getJobs = async () => {
     return data;
   };
   
-  export const getJobById = async (id) => {
+export const getJobById = async (id) => {
     const res = await fetch(`http://localhost:8000/api/jobs/${id}`, {
       method: "GET",
       headers: {

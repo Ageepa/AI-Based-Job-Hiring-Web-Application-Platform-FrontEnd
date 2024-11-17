@@ -13,6 +13,11 @@ export const createJobApplication = async (data) => {
       job: data.jobId,
     }),
   });
+  if (!res.ok) {
+    throw new Error("Failed to create job application");
+  }
+  const jobApplication = await res.json();
+  return jobApplication;
 };
 
 export const getJobApplicationsForJob = async (jobId) => {

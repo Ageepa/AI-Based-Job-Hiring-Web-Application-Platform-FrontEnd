@@ -54,9 +54,21 @@ function JobPage() {
     });
   };
 
-  //if (!isSignedIn) {
-    // return <Navigate to="/sign-in" />;
-  //}
+  if (!isSignedIn) {
+    return <Navigate to="/sign-in" />;
+   }
+
+  if (!isLoaded) {
+    return <div>Loading...</div>;
+  }
+
+  if (!job) {
+    return <div>Job not found</div>;
+  }
+
+  if (!user) {
+    return <div>Loading...</div>;
+  }
 
   if (isLoading) {
     return <div>Loading...</div>;
