@@ -115,10 +115,10 @@ function AdminJobCreatePage() {
             type="button"
             onClick={() =>
               setFormData({
-                Title: "",
-                Description: "",
-                Type: "",
-                Location: "",
+                title: "",
+                description: "",
+                type: "",
+                location: "",
                 q1: "",
                 q2: "",
                 q3: "",
