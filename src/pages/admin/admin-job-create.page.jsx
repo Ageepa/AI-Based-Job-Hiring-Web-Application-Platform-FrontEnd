@@ -111,6 +111,24 @@ function AdminJobCreatePage() {
         <Button type="submit" className="mt-8 bg-card text-card-foreground">
           Submit
         </Button>
+        <Button
+            type="button"
+            onClick={() =>
+              setFormData({
+                Title: "",
+                Description: "",
+                Type: "",
+                Location: "",
+                q1: "",
+                q2: "",
+                q3: "",
+              })
+            }
+            className="w-fit"
+            variant="outline"
+          >
+            Clear
+          </Button>
       </form>
     </div>
   );
